@@ -1,20 +1,31 @@
 import type { NextPage } from 'next';
 import styled from 'styled-components';
+import { useReducer } from 'react';
 
-import Title from 'Components/Title';
-import Skills from 'Components/Skills';
+import Skills from 'Components/Views/Skills';
+import Contact from 'Components/Contact';
+import Photo from 'Components/Photo';
+import Header from 'Components/Header';
+import viewReducer from './helpers/viewReducer';
 
-const Home: NextPage = () => {
+const App: NextPage = () => {
+  const [view, viewDispatch] = useReducer(viewReducer, <Skills />);
+
   return (
-    <Main>
-      <Title />
-      <Skills />
-      <p>Photo</p>
-      <p>Contact</p>
-    </Main>
+    <>
+      <Header viewDispatch={viewDispatch} />
+      <Main>
+        {view}
+        <Photo />
+        <Contact />
+      </Main>
+    </>
   );
 };
 
-export default Home;
+export default App;
 
-const Main = styled.main``;
+const Main = styled.main`
+  /* margin: 0 3em; */
+  /* margin-top: 3em; */
+`;
