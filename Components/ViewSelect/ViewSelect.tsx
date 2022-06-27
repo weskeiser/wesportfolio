@@ -18,8 +18,6 @@ const ViewSelect = ({ refsAndDispatch }: ViewSelectProps) => {
     const { viewDispatch } = refsAndDispatch;
     viewDispatch({ type });
 
-    console.log(refsAndDispatch);
-
     switch (type) {
       case "skills":
         return refsAndDispatch.skillsRef.current?.scrollIntoView({
@@ -38,14 +36,9 @@ const ViewSelect = ({ refsAndDispatch }: ViewSelectProps) => {
 
   return (
     <Form onInput={(e) => switchView(e)}>
-      <Radio
-        value="about"
-        label="Introduksjon"
-        id="about"
-        defaultChecked={true}
-      />
-      <Radio value="skills" label="Ferdigheter" id="skills" />
-      <Radio value="projects" id="projects" label="Prosjekter" />
+      <Radio value="about" text="Introduksjon" defaultChecked={true} />
+      <Radio value="skills" text="Ferdigheter" />
+      <Radio value="projects" text="Prosjekter" />
     </Form>
   );
 };

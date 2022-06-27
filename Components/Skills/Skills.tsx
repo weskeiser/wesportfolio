@@ -12,17 +12,16 @@ const Skills = forwardRef(({ view }: Skills, skillsRef) => {
     <Wrapper ref={skillsRef} view={view}>
       <h2>Ferdigheter</h2>
 
-      <hr />
+      <div>{view === "skills" && <hr />}</div>
 
       <ul>
+        <li>JavaScript/TypeScript</li>
+        <li>React.js/Next.js</li>
+
         <br />
         <li>HTML</li>
         <li>CSS/SCSS</li>
         <li>Styled Components</li>
-
-        <br />
-        <li>JavaScript/TypeScript</li>
-        <li>React.js</li>
 
         <br />
         <li>Git</li>
@@ -39,18 +38,19 @@ const titleColor1 = css`
 const Wrapper = styled.div`
   ${commonStyle}
 
-  border: 1px solid black;
-
-  hr {
-    color: red;
-    margin: 0;
-    margin-bottom: 0.7em;
-    width: 10em;
-  }
-
   h2 {
     color: ${(props: Skills) =>
-      props.view === "skills" ? titleColor1 : "red"};
+      props.view === "skills" ? titleColor1 : "#c9bf94"};
+  }
+
+  div {
+    margin: 0;
+    margin-bottom: 1em;
+    width: 10em;
+
+    hr {
+      color: ${titleColor1};
+    }
   }
 
   ul {

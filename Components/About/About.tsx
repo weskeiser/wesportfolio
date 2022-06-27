@@ -10,9 +10,9 @@ interface About {
 const About = forwardRef(({ view }: About, aboutRef) => {
   return (
     <Section ref={aboutRef} view={view}>
-      <h2>About</h2>
+      <h2>Introduksjon</h2>
 
-      <hr />
+      <div>{view === "about" && <hr />}</div>
 
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur iusto
@@ -33,15 +33,19 @@ const titleColor1 = css`
 const Section = styled.section`
   ${commonStyle};
 
-  hr {
-    color: red;
+  div {
     margin: 0;
-    margin-bottom: 0.7em;
-    width: 6em;
+    margin-bottom: 1em;
+    width: 11em;
+
+    hr {
+      color: ${titleColor1};
+    }
   }
 
   h2 {
-    color: ${(props: About) => (props.view === "about" ? titleColor1 : "red")};
+    color: ${(props: About) =>
+      props.view === "about" ? titleColor1 : "#c9bf94"};
   }
 `;
 

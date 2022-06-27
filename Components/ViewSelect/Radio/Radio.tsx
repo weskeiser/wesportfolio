@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 interface RadioProps {
-  id: string;
   value: string;
-  label: string;
+  text: string;
   defaultChecked?: boolean;
 }
 
-const Radio = ({ id, label, ...props }: RadioProps) => {
+const Radio = ({ text, ...props }: RadioProps) => {
   return (
     <Fieldset>
-      <label htmlFor={id}>{label}</label>
-      <input type="radio" name="views" {...props} />
+      <label htmlFor={text}>{text}</label>
+      <input id={text} type="radio" name="views" {...props} />
+      {console.log(props)}
     </Fieldset>
   );
 };
@@ -31,10 +31,12 @@ const Fieldset = styled.fieldset`
   }
 
   label {
+    color: ${({ theme }) => theme.colors.titleColor1};
   }
 
   input {
     appearance: none;
+    cursor: pointer;
   }
 `;
 

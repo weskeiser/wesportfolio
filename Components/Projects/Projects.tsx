@@ -12,7 +12,7 @@ const Projects = forwardRef(({ view }: Projects, projectsRef) => {
     <Section ref={projectsRef} view={view}>
       <h2>Prosjekter</h2>
 
-      <hr />
+      <div>{view === "projects" && <hr />}</div>
 
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore optio
@@ -33,16 +33,19 @@ const titleColor1 = css`
 const Section = styled.section`
   ${commonStyle};
 
-  hr {
-    color: red;
-    margin: 0;
-    margin-bottom: 0.7em;
-    width: 9em;
-  }
-
   h2 {
     color: ${(props: Projects) =>
-      props.view === "projects" ? titleColor1 : "red"};
+      props.view === "projects" ? titleColor1 : "#c9bf94"};
+  }
+
+  div {
+    margin: 0;
+    margin-bottom: 1em;
+    width: 9em;
+
+    hr {
+      color: ${titleColor1};
+    }
   }
 `;
 
