@@ -1,6 +1,5 @@
-import FooterIcons from 'Components/FooterIcons';
-import Image from 'next/image';
-import styled from 'styled-components';
+import FooterIcons from "Components/FooterIcons";
+import styled from "styled-components";
 
 const Contact = () => {
   return (
@@ -21,7 +20,7 @@ const Contact = () => {
 const Wrapper = styled.address`
   font-style: normal;
   width: 100%;
-  color: #c3b890;
+  color: ${({ theme }) => theme.colors.footerText};
   margin: 1em 0;
   text-align: center;
 

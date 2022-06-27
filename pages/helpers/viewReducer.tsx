@@ -1,15 +1,16 @@
-import About from 'Components/About';
-import Projects from 'Components/Projects';
-import Skills from 'Components/Skills';
+interface action {
+  action: "skills" | "about" | "projects" | undefined;
+  type: string;
+}
 
-const viewReducer = (view: JSX.Element, action: { type: string }) => {
+const viewReducer = (view: string, action: action): string | undefined => {
   switch (action.type) {
-    case 'skills':
-      return <Skills />;
-    case 'about':
-      return <About />;
-    case 'projects':
-      return <Projects />;
+    case "skills":
+      return "skills";
+    case "about":
+      return "about";
+    case "projects":
+      return "projects";
   }
 };
 

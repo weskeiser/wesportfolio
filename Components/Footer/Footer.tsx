@@ -1,6 +1,10 @@
-import Contact from 'Components/Contact';
-import Photo from 'Components/Photo';
-import styled from 'styled-components';
+import Contact from "Components/Contact";
+import Photo from "Components/Photo";
+import styled, { css } from "styled-components";
+
+const footerBackground = css`
+  ${({ theme }) => theme.colors.footerBackground}
+`;
 
 const Footer = () => {
   return (
@@ -12,12 +16,12 @@ const Footer = () => {
 };
 
 const Wrapper = styled.footer`
-  position: fixed;
+  position: sticky;
   width: 100%;
   bottom: 0;
 
-  border-top: 1px solid #333626;
-  background-color: #333626;
+  border-top: 1px solid ${footerBackground};
+  background-color: ${footerBackground};
   display: flex;
   height: 12em;
 `;

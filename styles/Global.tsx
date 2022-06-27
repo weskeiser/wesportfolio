@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
 * {
   margin: 0;
   padding: 0;
@@ -13,8 +13,8 @@ const GlobalStyles = createGlobalStyle`
 
 html {
   /* height: 100%; */
-  /* font-family: 'Montserrat', sans-serif; */
   font-family: Arial, Helvetica, sans-serif;
+  // Apple SD Gothic Neo
 }
 
 main {
@@ -27,5 +27,3 @@ body {
   touch-action: none;
 }
 `;
-
-export default GlobalStyles;

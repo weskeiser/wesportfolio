@@ -1,29 +1,39 @@
-import type { NextPage } from 'next';
-import styled from 'styled-components';
-import { useReducer } from 'react';
+import type { NextPage } from "next";
+import styled, { ThemeProvider } from "styled-components";
+import { useReducer, useRef } from "react";
 
-import Header from 'Components/Header';
-import Footer from 'Components/Footer';
-import Skills from 'Components/Skills';
-import viewReducer from './helpers/viewReducer';
+import Header from "Components/Header";
+import Footer from "Components/Footer";
+import viewReducer from "./helpers/viewReducer";
+
+import { theme } from "styles";
+import Views from "Components/Views";
 
 const App: NextPage = () => {
-  const [view, viewDispatch] = useReducer(viewReducer, <Skills />);
+  const skillsRef = useRef<HTMLInputElement>(null);
+  const aboutRef = useRef<HTMLInputElement>(null);
+  const projectsRef = useRef<HTMLInputElement>(null);
+
+  const [view, viewDispatch] = useReducer<string>(viewReducer, "about");
+
+  const refs = {
+    skillsRef,
+    aboutRef,
+    projectsRef,
+  };
+
+  const refsAndDispatch = Object.assign(refs, { viewDispatch });
 
   return (
-    <>
-      <Header viewDispatch={viewDispatch} />
-
-      <Main>{view}</Main>
-
+    <ThemeProvider theme={theme}>
+      <Header refsAndDispatch={refsAndDispatch} />
+      <Views refs={refs} view={view} />
+      <Main></Main>
       <Footer />
-    </>
+    </ThemeProvider>
   );
 };
 
 export default App;
 
 const Main = styled.main``;
-
-// Helvetica
-// Apple SD Gothic Neo

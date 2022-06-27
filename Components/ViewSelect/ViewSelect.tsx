@@ -1,35 +1,56 @@
-import { Dispatch, FormEvent } from 'react';
-import styled from 'styled-components';
-import Radio from './Radio/Radio';
+import { Dispatch, FormEvent, RefObject } from "react";
+import styled from "styled-components";
+import Radio from "./Radio/Radio";
 
 interface ViewSelectProps {
-  viewDispatch: Dispatch<string | object>;
+  refsAndDispatch: {
+    skillsRef: RefObject<HTMLInputElement>;
+    aboutRef: RefObject<HTMLInputElement>;
+    projectsRef: RefObject<HTMLInputElement>;
+    viewDispatch: Dispatch<string>;
+  };
 }
 
-const ViewSelect = ({ viewDispatch }: ViewSelectProps) => {
+const ViewSelect = ({ refsAndDispatch }: ViewSelectProps) => {
   const switchView = (e: FormEvent<HTMLFormElement>) => {
     const target = e.target as HTMLFormElement;
-    const type = target.value;
-
+    const type = target.value as string;
+    const { viewDispatch } = refsAndDispatch;
     viewDispatch({ type });
+
+    console.log(refsAndDispatch);
+
+    switch (type) {
+      case "skills":
+        return refsAndDispatch.skillsRef.current?.scrollIntoView({
+          behavior: "smooth",
+        });
+      case "about":
+        return refsAndDispatch.aboutRef.current?.scrollIntoView({
+          behavior: "smooth",
+        });
+      case "projects":
+        return refsAndDispatch.projectsRef.current?.scrollIntoView({
+          behavior: "smooth",
+        });
+    }
   };
 
   return (
     <Form onInput={(e) => switchView(e)}>
       <Radio
-        value="skills"
-        label="Ferdigheter"
-        id="skills"
+        value="about"
+        label="Introduksjon"
+        id="about"
         defaultChecked={true}
       />
-      <Radio value="about" label="Introduksjon" id="about" />
+      <Radio value="skills" label="Ferdigheter" id="skills" />
       <Radio value="projects" id="projects" label="Prosjekter" />
     </Form>
   );
 };
 
 const Form = styled.form`
-  margin-bottom: 3em;
   display: flex;
 `;
 

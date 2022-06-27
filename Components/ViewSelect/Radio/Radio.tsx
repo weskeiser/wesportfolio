@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 interface RadioProps {
   id: string;
@@ -31,12 +31,10 @@ const Fieldset = styled.fieldset`
   }
 
   label {
-    border: 1px solid green;
   }
 
   input {
     appearance: none;
-    border: 1px solid red;
   }
 `;
 
