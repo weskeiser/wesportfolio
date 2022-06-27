@@ -1,9 +1,16 @@
 import styled from 'styled-components';
 
-const Radio = ({ id, ...props }) => {
+interface RadioProps {
+  id: string;
+  value: string;
+  label: string;
+  defaultChecked?: boolean;
+}
+
+const Radio = ({ id, label, ...props }: RadioProps) => {
   return (
     <Fieldset>
-      <label htmlFor={id}>test</label>
+      <label htmlFor={id}>{label}</label>
       <input type="radio" name="views" {...props} />
     </Fieldset>
   );

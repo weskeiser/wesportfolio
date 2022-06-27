@@ -1,31 +1,36 @@
-import { Dispatch } from 'react';
+import { Dispatch, FormEvent } from 'react';
 import styled from 'styled-components';
 import Radio from './Radio/Radio';
 
-interface viewsRadioProps {
+interface ViewSelectProps {
   viewDispatch: Dispatch<string | object>;
 }
 
-const ViewsRadio = ({ viewDispatch }: viewsRadioProps) => {
-  const switchView = (e) => {
-    const type = e.target.value;
+const ViewSelect = ({ viewDispatch }: ViewSelectProps) => {
+  const switchView = (e: FormEvent<HTMLFormElement>) => {
+    const target = e.target as HTMLFormElement;
+    const type = target.value;
 
     viewDispatch({ type });
   };
 
   return (
     <Form onInput={(e) => switchView(e)}>
-      <Radio value="skills" id="skills" defaultChecked={true} />
-      <Radio value="about" id="about" />
-      <Radio value="projects" id="projects" />
+      <Radio
+        value="skills"
+        label="Ferdigheter"
+        id="skills"
+        defaultChecked={true}
+      />
+      <Radio value="about" label="Introduksjon" id="about" />
+      <Radio value="projects" id="projects" label="Prosjekter" />
     </Form>
   );
 };
 
 const Form = styled.form`
-  margin-left: auto;
+  margin-bottom: 3em;
   display: flex;
-  flex-direction: column;
 `;
 
-export default ViewsRadio;
+export default ViewSelect;

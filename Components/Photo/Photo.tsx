@@ -3,16 +3,17 @@ import styled from 'styled-components';
 
 const Photo = () => {
   return (
-    <Wrapper>
+    <ImageWrapper>
       <Image src="/profilephoto.png" layout="fill" sizes="50vw" />
-    </Wrapper>
+    </ImageWrapper>
   );
 };
 
-const Wrapper = styled.div`
-  border: 1px solid black;
-  height: 15em;
+const ImageWrapper = styled.div`
+  height: 100%;
+  aspect-ratio: 2 / 3;
   position: relative;
+  margin-left: auto;
 
   img {
     object-fit: contain;

@@ -1,13 +1,15 @@
-import Skills from 'Components/Views/Skills';
+import About from 'Components/About';
+import Projects from 'Components/Projects';
+import Skills from 'Components/Skills';
 
 const viewReducer = (view: JSX.Element, action: { type: string }) => {
   switch (action.type) {
     case 'skills':
       return <Skills />;
     case 'about':
-      return <p>about</p>;
+      return <About />;
     case 'projects':
-      return <p>projects</p>;
+      return <Projects />;
   }
 };
 
