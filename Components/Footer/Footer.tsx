@@ -24,6 +24,8 @@ const Wrapper = styled.footer`
   background-color: ${footerBackground};
   display: flex;
   height: 12em;
+  padding-left: 1em;
+  line-height: 1.5;
 `;
 
 export default Footer;

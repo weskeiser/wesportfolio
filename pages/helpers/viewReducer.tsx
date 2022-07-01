@@ -6,10 +6,10 @@ interface action {
 const viewReducer = (view: string, action: action): string | undefined => {
   if (action.type === "previous") {
     switch (view) {
-      case "about":
+      case "intro":
         return view;
       case "skills":
-        return "about";
+        return "intro";
       case "projects":
         return "skills";
     }
@@ -17,7 +17,7 @@ const viewReducer = (view: string, action: action): string | undefined => {
 
   if (action.type === "next") {
     switch (view) {
-      case "about":
+      case "intro":
         return "skills";
       case "skills":
         return "projects";

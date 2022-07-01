@@ -16,9 +16,10 @@ const SocialsIcons = () => {
 
 const Wrapper = styled.div`
   display: flex;
-  gap: 1em;
+  gap: 0.5em;
+  margin-top: 0.8em;
   /* left: 50%; */
-  transform: translateX(40%);
+  /* transform: translateX(40%); */
 `;
 
 const ImageWrapper = styled.div`

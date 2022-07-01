@@ -7,24 +7,25 @@ export const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 
-:root {
-  /* height: 100%; */
-}
 
 html {
-  /* height: 100%; */
   font-family:  Helvetica, sans-serif;
   font-weight: 300;
-  // Apple SD Gothic Neo
-}
 
-main {
-  margin-bottom: 10em;
+  @font-face {
+    font-family: Mukta-SemiBold;
+    src: url('/fonts/mukta/Mukta-Light.ttf');
+  }
 }
 
 body {
-  /* height: 100%; */
   // REMOVE AFTER DEV
   touch-action: none;
+}
+
+
+main {
+  margin-bottom: 10em;
+  height: 100vh;
 }
 `;

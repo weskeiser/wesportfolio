@@ -1,4 +1,4 @@
-import { Dispatch, RefObject } from "react";
+import { Dispatch } from "react";
 import styled from "styled-components";
 import ViewSelect from "./ViewSelect";
 
@@ -21,43 +21,17 @@ const Wrapper = styled.header`
   top: 0;
   background-color: ${({ theme }) => theme.colors.page};
   height: ${({ theme }) => theme.heights.header};
-  display: grid;
-  margin-bottom: 2.7em;
-  border-bottom: 1px solid grey;
+  display: flex;
+  border-bottom: 1px solid rgb(191, 173, 108, 0.5);
 
   & > h1 {
     margin: auto 0;
     margin-left: 0.4em;
     color: ${({ theme }) => theme.colors.footerBackground};
+    color: #60693a;
     font-size: 1.5em;
-    grid-row: 1;
-  }
-
-  & > fieldset {
-    border: none;
-    grid-row: 1;
-    display: flex;
-
-    & > input {
-      width: 3em;
-      border: none;
-      cursor: pointer;
-      background-color: ${({ theme }) => theme.colors.page};
-      margin-bottom: 1px;
-
-      :nth-of-type(1) {
-        transform: rotate(270deg);
-      }
-
-      :nth-of-type(2) {
-        transform: rotate(90deg);
-      }
-    }
-
-    & > label {
-      margin: auto 0;
-      text-transform: capitalize;
-    }
+    font-family: Mukta-SemiBold;
+    font-weight: 600;
   }
 `;
 
