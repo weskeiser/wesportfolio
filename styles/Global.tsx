@@ -13,7 +13,8 @@ export const GlobalStyles = createGlobalStyle`
 
 html {
   /* height: 100%; */
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:  Helvetica, sans-serif;
+  font-weight: 300;
   // Apple SD Gothic Neo
 }
 

@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import styled from 'styled-components';
+import Image from "next/image";
+import styled from "styled-components";
 
-const FooterIcons = () => {
+const SocialsIcons = () => {
   return (
     <Wrapper>
       <ImageWrapper>
@@ -27,4 +27,4 @@ const ImageWrapper = styled.div`
   position: relative;
 `;
 
-export default FooterIcons;
+export default SocialsIcons;

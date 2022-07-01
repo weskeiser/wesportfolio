@@ -1,8 +1,18 @@
 import About from "Components/About";
 import Projects from "Components/Projects";
 import Skills from "Components/Skills";
+import { RefObject } from "react";
 
-const Views = ({ refs, view }) => {
+interface Views {
+  refs: {
+    skillsRef: RefObject<HTMLInputElement>;
+    aboutRef: RefObject<HTMLInputElement>;
+    projectsRef: RefObject<HTMLInputElement>;
+  };
+  view: string;
+}
+
+const Views = ({ refs, view }: Views) => {
   return (
     <>
       <About ref={refs.aboutRef} view={view} />

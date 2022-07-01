@@ -4,10 +4,11 @@ import { useReducer, useRef } from "react";
 
 import Header from "Components/Header";
 import Footer from "Components/Footer";
-import viewReducer from "./helpers/viewReducer";
+import Views from "Components/Views";
 
 import { theme } from "styles";
-import Views from "Components/Views";
+
+import viewReducer from "./helpers/viewReducer";
 
 const App: NextPage = () => {
   const skillsRef = useRef<HTMLInputElement>(null);
@@ -22,14 +23,14 @@ const App: NextPage = () => {
     projectsRef,
   };
 
-  const refsAndDispatch = Object.assign(refs, { viewDispatch });
-
   return (
     <ThemeProvider theme={theme}>
-      <Header viewDispatch={viewDispatch} />
+      <Header view={view} viewDispatch={viewDispatch} />
+
       <Main>
         <Views refs={refs} view={view} />
       </Main>
+
       <Footer />
     </ThemeProvider>
   );

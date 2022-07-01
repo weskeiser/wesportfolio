@@ -1,5 +1,5 @@
-import Contact from "Components/Contact";
-import Photo from "Components/Photo";
+import Contact from "Components/Footer/Contact";
+import Photo from "Components/Footer/Photo";
 import styled, { css } from "styled-components";
 
 const footerBackground = css`

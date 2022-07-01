@@ -1,14 +1,26 @@
-// interface ViewSelect {
-//   viewDispatch:
-// }
+import { Dispatch } from "react";
+import styled from "styled-components";
 
-const ViewSelect = ({ viewDispatch }) => {
+interface ViewSelect {
+  view: string;
+  viewDispatch: Dispatch<string>;
+}
+
+const ViewSelect = ({ view, viewDispatch }: ViewSelect) => {
   return (
-    <form>
-      <input type="button" onClick={() => viewDispatch({ type: "previous" })} />
-      <p>Intro</p>
-      <input type="button" onClick={() => viewDispatch({ type: "next" })} />
-    </form>
+    <fieldset>
+      <input
+        type="button"
+        onClick={() => viewDispatch({ type: "previous" })}
+        value="&#9650;"
+      />
+      <label>{view}</label>
+      <input
+        type="button"
+        onClick={() => viewDispatch({ type: "next" })}
+        value="&#9650;"
+      />
+    </fieldset>
   );
 };
 

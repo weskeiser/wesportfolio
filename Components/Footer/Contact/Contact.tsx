@@ -1,4 +1,4 @@
-import FooterIcons from "Components/FooterIcons";
+import SocialsIcons from "Components/Footer/Contact/SocialsIcons";
 import styled from "styled-components";
 
 const Contact = () => {
@@ -12,7 +12,7 @@ const Contact = () => {
       <a href="mailto:wes@weskeiser.no/">wes@weskeiser.no</a>
       <br />
       <a href="+4746121065">+47 461 21 065</a>
-      <FooterIcons />
+      <SocialsIcons />
     </Wrapper>
   );
 };
