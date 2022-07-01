@@ -11,7 +11,6 @@ const Radio = ({ text, ...props }: RadioProps) => {
     <Fieldset>
       <label htmlFor={text}>{text}</label>
       <input id={text} type="radio" name="views" {...props} />
-      {console.log(props)}
     </Fieldset>
   );
 };
@@ -19,8 +18,9 @@ const Radio = ({ text, ...props }: RadioProps) => {
 const Fieldset = styled.fieldset`
   border: none;
   display: grid;
-  width: 10em;
   height: 2em;
+  margin-left: auto;
+  margin-top: 0.5em;
 
   label,
   input {
@@ -32,6 +32,7 @@ const Fieldset = styled.fieldset`
 
   label {
     color: ${({ theme }) => theme.colors.titleColor1};
+    /* background-color: red; */
   }
 
   input {

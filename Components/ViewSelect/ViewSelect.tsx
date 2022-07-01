@@ -44,7 +44,13 @@ const ViewSelect = ({ refsAndDispatch }: ViewSelectProps) => {
 };
 
 const Form = styled.form`
-  display: flex;
+  grid-row: 1/4;
+  grid-column: 5;
+  text-align: center;
+  background-color: ${({ theme }) => theme.colors.page};
+  width: 6em;
+  margin-left: auto;
+  /* grid-column: 8; */
 `;
 
 export default ViewSelect;

@@ -36,4 +36,6 @@ const App: NextPage = () => {
 
 export default App;
 
-const Main = styled.main``;
+const Main = styled.main`
+  background-color: ${({ theme }) => theme.colors.page};
+`;
