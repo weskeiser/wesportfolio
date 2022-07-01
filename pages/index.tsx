@@ -26,9 +26,10 @@ const App: NextPage = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header refsAndDispatch={refsAndDispatch} />
-      <Views refs={refs} view={view} />
-      <Main></Main>
+      <Header viewDispatch={viewDispatch} />
+      <Main>
+        <Views refs={refs} view={view} />
+      </Main>
       <Footer />
     </ThemeProvider>
   );
@@ -37,5 +38,5 @@ const App: NextPage = () => {
 export default App;
 
 const Main = styled.main`
-  background-color: ${({ theme }) => theme.colors.page};
+  /* background-color: ${({ theme }) => theme.colors.page}; */
 `;

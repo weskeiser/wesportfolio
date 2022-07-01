@@ -1,7 +1,6 @@
-import ViewSelect from "Components/ViewSelect";
-import Image from "next/image";
 import { Dispatch, RefObject } from "react";
 import styled from "styled-components";
+import ViewSelect from "./ViewSelect";
 
 interface Header {
   refsAndDispatch: {
@@ -12,13 +11,11 @@ interface Header {
   };
 }
 
-const Header = ({ refsAndDispatch }: Header) => {
+const Header = ({ viewDispatch }: Header) => {
   return (
     <Wrapper>
-      <Image src="/wk-icon.png" width="70" height="40" />
       <h1>Wes Keiser</h1>
-
-      <ViewSelect refsAndDispatch={refsAndDispatch} />
+      <ViewSelect viewDispatch={viewDispatch} />
     </Wrapper>
   );
 };
@@ -27,26 +24,26 @@ const Wrapper = styled.header`
   position: sticky;
   top: 0;
   background-color: ${({ theme }) => theme.colors.page};
+  background-color: rgba(111, 111, 111, 0.5);
   height: ${({ theme }) => theme.heights.header};
   display: grid;
   margin-bottom: 2.7em;
 
-  img {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  h1 {
+  & > h1 {
     color: ${({ theme }) => theme.colors.footerBackground};
     /* background-color: ${({ theme }) => theme.colors.page}; */
     font-size: 2em;
-    /* border-bottom: 1px solid ${({ theme }) => theme.colors.titleColor1}; */
-    /* border-right: 1px solid ${({ theme }) => theme.colors.titleColor1}; */
-    /* border-radius: 0 0 1em 0; */
-    /* padding: 0.25em; */
     padding-left: 0.4em;
     grid-row: 1;
-    grid-column: 4;
+  }
+
+  & > form {
+    grid-row: 1;
+    display: flex;
+
+    & > input {
+      width: 3em;
+    }
   }
 `;
 
