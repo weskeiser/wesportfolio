@@ -5,10 +5,10 @@ const SocialsIcons = () => {
   return (
     <Wrapper>
       <ImageWrapper>
-        <Image src="/github.svg" layout="fill" />
+        <Image src="/images/github.svg" layout="fill" />
       </ImageWrapper>
       <ImageWrapper>
-        <Image src="/linkedin.svg" layout="fill" />
+        <Image src="/images/linkedin.svg" layout="fill" />
       </ImageWrapper>
     </Wrapper>
   );

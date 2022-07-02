@@ -25,6 +25,16 @@ const viewReducer = (view: string, action: action): string | undefined => {
         return view;
     }
   }
+
+  if (action.type === "highlightIntro") {
+    return "intro";
+  }
+  if (action.type === "highlightSkills") {
+    return "skills";
+  }
+  if (action.type === "highlightProjects") {
+    return "projects";
+  }
 };
 
 export default viewReducer;

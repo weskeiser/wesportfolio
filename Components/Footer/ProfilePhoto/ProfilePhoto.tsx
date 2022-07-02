@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import styled from 'styled-components';
+import Image from "next/image";
+import styled from "styled-components";
 
-const Photo = () => {
+const ProfilePhoto = () => {
   return (
     <ImageWrapper>
-      <Image src="/profilephoto.png" layout="fill" sizes="50vw" />
+      <Image src="/images/profilephoto.png" layout="fill" sizes="50vw" />
     </ImageWrapper>
   );
 };
@@ -21,4 +21,4 @@ const ImageWrapper = styled.div`
   }
 `;
 
-export default Photo;
+export default ProfilePhoto;

@@ -56,7 +56,7 @@ const ViewSelect = ({ view, viewDispatch }: ViewSelect) => {
     <Wrapper view={view}>
       <button onClick={() => viewDispatch({ type: "previous" })}>
         <img
-          src="/arrow.svg"
+          src="/images/arrow.svg"
           alt="navigation arrow left"
           style={decideOpacity(view, "left")}
         />
@@ -64,7 +64,7 @@ const ViewSelect = ({ view, viewDispatch }: ViewSelect) => {
       <p>{text(view)}</p>
       <button onClick={() => viewDispatch({ type: "next" })}>
         <img
-          src="/arrow.svg"
+          src="/images/arrow.svg"
           alt="navigation arrow right"
           style={decideOpacity(view, "right")}
         />

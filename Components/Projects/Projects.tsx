@@ -1,6 +1,7 @@
 import { commonStyle } from "Components/Views/commonStyle";
 import { forwardRef, ForwardRefRenderFunction } from "react";
 import styled, { css } from "styled-components";
+import { useInView } from "react-intersection-observer";
 
 interface Projects {
   view: string;

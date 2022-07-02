@@ -3,7 +3,6 @@ import styled, { ThemeProvider } from "styled-components";
 import { useEffect, useMemo, useReducer, useRef, useState } from "react";
 
 import Header from "Components/Header";
-import Footer from "Components/Footer";
 import Views from "Components/Views";
 
 import { theme } from "styles";
@@ -25,7 +24,6 @@ const App: NextPage = () => {
   useEffect(() => {
     // Avoid scrolling on page entry
     if (!firstRenderDone) {
-      console.log("ho");
       setFirstRenderDone(true);
       return;
     }
@@ -58,10 +56,10 @@ const App: NextPage = () => {
       <Header view={getView} viewDispatch={viewDispatch} />
 
       <Main>
-        <Views view={getView} refs={refs} />
+        <Views view={getView} refs={refs} viewDispatch={viewDispatch} />
       </Main>
 
-      <Footer />
+      {/* <Footer /> */}
     </ThemeProvider>
   );
 };
@@ -71,4 +69,5 @@ export default App;
 const Main = styled.main`
   background-color: ${({ theme }) => theme.colors.page};
   padding-top: 2em;
+  margin-bottom: ${({ theme }) => theme.heights.footer};
 `;

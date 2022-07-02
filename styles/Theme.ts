@@ -8,5 +8,6 @@ export const theme = {
 
   heights: {
     header: "3.5em",
+    footer: "12em",
   },
 };

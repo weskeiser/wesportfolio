@@ -1,5 +1,5 @@
 import Contact from "Components/Footer/Contact";
-import Photo from "Components/Footer/Photo";
+import ProfilePhoto from "Components/Footer/ProfilePhoto";
 import styled, { css } from "styled-components";
 
 const footerBackground = css`
@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <Wrapper>
       <Contact />
-      <Photo />
+      <ProfilePhoto />
     </Wrapper>
   );
 };
@@ -23,7 +23,7 @@ const Wrapper = styled.footer`
   border-top: 1px solid ${footerBackground};
   background-color: ${footerBackground};
   display: flex;
-  height: 12em;
+  height: ${({ theme }) => theme.heights.footer};
   padding-left: 1em;
   line-height: 1.5;
 `;

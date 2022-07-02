@@ -25,7 +25,7 @@ body {
 
 
 main {
-  margin-bottom: 10em;
+  /* margin-bottom: 12em; */
   height: 100vh;
 }
 `;
