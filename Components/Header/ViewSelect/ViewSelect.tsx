@@ -1,13 +1,14 @@
 import { Dispatch } from "react";
 import styled from "styled-components";
+import SelectButton from "../SelectButton";
 
 interface ViewSelect {
-  view: string;
+  viewMemo: string;
   viewDispatch: Dispatch<string>;
 }
 
-const text = (view) => {
-  switch (view) {
+const text = (viewMemo: ViewSelect["viewMemo"]) => {
+  switch (viewMemo) {
     case "intro":
       return "Introduksjon";
     case "skills":
@@ -17,58 +18,20 @@ const text = (view) => {
   }
 };
 
-const decideOpacity = (view: string, direction: string) => {
-  const filterAttribute = {
-    filter: "opacity(50%)",
-  };
-
-  switch (view) {
-    case "intro":
-      if (direction === "left") {
-        return filterAttribute;
-      }
-      break;
-    case "skills":
-      break;
-    case "projects":
-      if (direction === "right") {
-        return filterAttribute;
-      }
-      break;
-  }
-};
-
-const decideOpacityRight = (view: string) => {
-  switch (view) {
-    case "intro":
-      break;
-    case "skills":
-      break;
-    case "projects":
-      return {
-        filter: "opacity(50%)",
-      };
-  }
-};
-
-const ViewSelect = ({ view, viewDispatch }: ViewSelect) => {
+const ViewSelect = ({ viewMemo, viewDispatch }: ViewSelect) => {
   return (
-    <Wrapper view={view}>
-      <button onClick={() => viewDispatch({ type: "previous" })}>
-        <img
-          src="/images/arrow.svg"
-          alt="navigation arrow left"
-          style={decideOpacity(view, "left")}
-        />
-      </button>
-      <p>{text(view)}</p>
-      <button onClick={() => viewDispatch({ type: "next" })}>
-        <img
-          src="/images/arrow.svg"
-          alt="navigation arrow right"
-          style={decideOpacity(view, "right")}
-        />
-      </button>
+    <Wrapper>
+      <SelectButton
+        viewMemo={viewMemo}
+        viewDispatch={viewDispatch}
+        direction="previous"
+      />
+      <p>{text(viewMemo)}</p>
+      <SelectButton
+        viewMemo={viewMemo}
+        viewDispatch={viewDispatch}
+        direction="next"
+      />
     </Wrapper>
   );
 };
@@ -82,6 +45,10 @@ const Wrapper = styled.div`
     background-color: ${({ theme }) => theme.colors.page};
     border: none;
     /* border: 1px solid black; */
+
+    :disabled {
+      cursor: initial;
+    }
 
     img {
       width: 0.6em;

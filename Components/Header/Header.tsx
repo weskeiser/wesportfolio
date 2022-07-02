@@ -1,17 +1,17 @@
-import { Dispatch } from "react";
+import { Dispatch, RefObject } from "react";
 import styled from "styled-components";
 import ViewSelect from "./ViewSelect";
 
 interface Header {
-  view: string;
+  viewMemo: string;
   viewDispatch: Dispatch<string>;
 }
 
-const Header = ({ view, viewDispatch }: Header) => {
+const Header = ({ viewMemo, viewDispatch }: Header) => {
   return (
     <Wrapper>
       <h1>Wes Keiser</h1>
-      <ViewSelect view={view} viewDispatch={viewDispatch} />
+      <ViewSelect viewMemo={viewMemo} viewDispatch={viewDispatch} />
     </Wrapper>
   );
 };

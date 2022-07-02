@@ -1,7 +1,7 @@
-import Intro from "Components/Intro";
-import Projects from "Components/Projects";
-import Skills from "Components/Skills";
-import { RefObject, useEffect, useId, useRef, useState } from "react";
+import Intro from "./Intro";
+import Projects from "./Projects";
+import Skills from "./Skills";
+import { Dispatch, RefObject, SetStateAction, useEffect } from "react";
 
 interface Views {
   refs: {
@@ -9,25 +9,33 @@ interface Views {
     introRef: RefObject<HTMLInputElement>;
     projectsRef: RefObject<HTMLInputElement>;
   };
-  view: string;
+  viewMemo: string;
+  viewDispatch: Dispatch<string>;
+  setSimpleView: Dispatch<SetStateAction<string>>;
 }
 
-const Views = ({ refs, view, viewDispatch }: Views) => {
-  const [intervalPending, setIntervalPending] = useState();
-
+const Views = ({ refs, viewMemo, viewDispatch, setSimpleView }: Views) => {
   const onScroll = () => {
     const intro = refs.introRef.current;
     const skills = refs.skillsRef.current;
     const projects = refs.projectsRef.current;
+
     const introWithinBounds = intro?.getBoundingClientRect().top < 70;
     const skillsWithinBounds = skills?.getBoundingClientRect().top < 123.5;
     const projectsWithinBounds = projects?.getBoundingClientRect().top < 150;
 
-    if (introWithinBounds && !skillsWithinBounds && !projectsWithinBounds)
-      viewDispatch({ type: "highlightIntro" });
-    if (skillsWithinBounds && !projectsWithinBounds)
-      viewDispatch({ type: "highlightSkills" });
-    if (projectsWithinBounds) viewDispatch({ type: "highlightProjects" });
+    if (introWithinBounds && !skillsWithinBounds && !projectsWithinBounds) {
+      viewDispatch({ type: "resetIntro" });
+      setSimpleView("intro");
+    }
+    if (skillsWithinBounds && !projectsWithinBounds) {
+      viewDispatch({ type: "resetSkills" });
+      setSimpleView("skills");
+    }
+    if (projectsWithinBounds) {
+      viewDispatch({ type: "resetProjects" });
+      setSimpleView("projects");
+    }
   };
 
   useEffect(() => {
@@ -39,9 +47,9 @@ const Views = ({ refs, view, viewDispatch }: Views) => {
 
   return (
     <>
-      <Intro ref={refs.introRef} view={view} />
-      <Skills ref={refs.skillsRef} view={view} />
-      <Projects ref={refs.projectsRef} view={view} />
+      <Intro ref={refs.introRef} viewMemo={viewMemo} />
+      <Skills ref={refs.skillsRef} viewMemo={viewMemo} />
+      <Projects ref={refs.projectsRef} viewMemo={viewMemo} />
     </>
   );
 };

@@ -9,31 +9,30 @@ const viewReducer = (view: string, action: action): string | undefined => {
       case "intro":
         return view;
       case "skills":
-        return "intro";
+        return "intro, clicked";
       case "projects":
-        return "skills";
+        return "skills, clicked";
     }
   }
 
   if (action.type === "next") {
     switch (view) {
       case "intro":
-        return "skills";
+        return "skills, clicked";
       case "skills":
-        return "projects";
+        return "projects, clicked";
       case "projects":
         return view;
     }
   }
 
-  if (action.type === "highlightIntro") {
-    return "intro";
-  }
-  if (action.type === "highlightSkills") {
-    return "skills";
-  }
-  if (action.type === "highlightProjects") {
-    return "projects";
+  switch (action.type) {
+    case "resetIntro":
+      return "intro";
+    case "resetSkills":
+      return "skills";
+    case "resetProjects":
+      return "projects";
   }
 };
 

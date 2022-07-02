@@ -1,11 +1,16 @@
 import type { NextPage } from "next";
-import styled, { ThemeProvider } from "styled-components";
-import { useEffect, useMemo, useReducer, useRef, useState } from "react";
+import styled from "styled-components";
+import {
+  RefObject,
+  useEffect,
+  useMemo,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
 
 import Header from "Components/Header";
 import Views from "Components/Views";
-
-import { theme } from "styles";
 
 import viewReducer from "./helpers/viewReducer";
 
@@ -13,61 +18,60 @@ const App: NextPage = () => {
   const skillsRef = useRef<HTMLInputElement>(null);
   const introRef = useRef<HTMLInputElement>(null);
   const projectsRef = useRef<HTMLInputElement>(null);
-
-  const [view, viewDispatch] = useReducer<string>(viewReducer, "intro");
-
-  const getView = useMemo(() => {
-    return view;
-  }, [view]);
-
-  const [firstRenderDone, setFirstRenderDone] = useState(false);
-  useEffect(() => {
-    // Avoid scrolling on page entry
-    if (!firstRenderDone) {
-      setFirstRenderDone(true);
-      return;
-    }
-
-    // Focus view when clicked in header
-    switch (getView) {
-      case "intro":
-        return introRef.current?.scrollIntoView({
-          behavior: "smooth",
-        });
-      case "skills":
-        return skillsRef.current?.scrollIntoView({
-          behavior: "smooth",
-        });
-      case "projects":
-        return projectsRef.current?.scrollIntoView({
-          behavior: "smooth",
-        });
-    }
-  }, [getView]);
-
   const refs = {
     skillsRef,
     introRef,
     projectsRef,
   };
 
+  const [view, viewDispatch] = useReducer<string>(viewReducer, "intro");
+  const [simpleView, setSimpleView] = useState("intro");
+  const viewMemo = useMemo(() => {
+    return simpleView;
+  }, [view, simpleView]);
+
+  useEffect(() => {
+    // Focus view when clicked in header
+
+    const resolve = (type: string, ref: RefObject<HTMLInputElement>) => {
+      viewDispatch({ type });
+      ref.current?.scrollIntoView({
+        behavior: "smooth",
+      });
+    };
+
+    switch (view) {
+      case "intro, clicked":
+        resolve("resetIntro", introRef);
+        break;
+      case "skills, clicked":
+        resolve("resetSkills", skillsRef);
+        break;
+      case "projects, clicked":
+        resolve("resetProjects", projectsRef);
+        break;
+    }
+  }, [view]);
+
   return (
-    <ThemeProvider theme={theme}>
-      <Header view={getView} viewDispatch={viewDispatch} />
+    <>
+      <Header viewMemo={viewMemo} viewDispatch={viewDispatch} />
 
       <Main>
-        <Views view={getView} refs={refs} viewDispatch={viewDispatch} />
+        <Views
+          viewMemo={viewMemo}
+          viewDispatch={viewDispatch}
+          refs={refs}
+          setSimpleView={setSimpleView}
+        />
       </Main>
-
-      {/* <Footer /> */}
-    </ThemeProvider>
+    </>
   );
 };
 
 export default App;
 
 const Main = styled.main`
-  background-color: ${({ theme }) => theme.colors.page};
   padding-top: 2em;
   margin-bottom: ${({ theme }) => theme.heights.footer};
 `;

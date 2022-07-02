@@ -1,19 +1,20 @@
 import { commonStyle } from "Components/Views/commonStyle";
 import { forwardRef, ForwardRefRenderFunction } from "react";
 import styled, { css } from "styled-components";
-import { useInView } from "react-intersection-observer";
 
 interface Projects {
-  view: string;
+  viewMemo: string;
   ref: ForwardRefRenderFunction<HTMLInputElement, {}>;
 }
 
-const Projects = forwardRef(({ view }: Projects, projectsRef) => {
+const Projects = forwardRef(({ viewMemo }: Projects, projectsRef) => {
   return (
-    <Section ref={projectsRef} view={view}>
+    <Section ref={projectsRef} viewMemo={viewMemo}>
       <h2>Prosjekter</h2>
 
-      <div>{view === "projects" && <hr />}</div>
+      <div>
+        <hr />
+      </div>
 
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore optio
@@ -36,7 +37,7 @@ const Section = styled.section`
 
   h2 {
     color: ${(props: Projects) =>
-      props.view === "projects" ? titleColor1 : "#c9bf94"};
+      props.viewMemo === "projects" ? titleColor1 : "#c9bf94"};
   }
 
   div {
@@ -45,7 +46,8 @@ const Section = styled.section`
     width: 9em;
 
     hr {
-      color: ${titleColor1};
+      color: ${({ viewMemo }) =>
+        viewMemo === "projects" ? titleColor1 : "transparent"};
     }
   }
 `;

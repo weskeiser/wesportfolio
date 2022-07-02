@@ -12,9 +12,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="description" content="Portfolio by Wes Keiser" />
         <link rel="icon" href="/wk-icon.png" />
       </Head>
-      <GlobalStyles />
-      <Component {...pageProps} />
       <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Component {...pageProps} />
         <Footer />
       </ThemeProvider>
     </>
