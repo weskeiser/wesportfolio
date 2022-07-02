@@ -4,7 +4,7 @@ import SelectButton from "../SelectButton";
 
 interface ViewSelect {
   viewMemo: string;
-  viewDispatch: Dispatch<string>;
+  viewDispatch: Dispatch<{ type: string }>;
 }
 
 const text = (viewMemo: ViewSelect["viewMemo"]) => {

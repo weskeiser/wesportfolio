@@ -1,4 +1,4 @@
-import { Dispatch, useEffect, useState } from "react";
+import { Dispatch, MouseEvent, useEffect, useState } from "react";
 
 const disabledOpacity = (viewMemo: string, direction: string) => {
   const filterAttribute = {
@@ -24,12 +24,13 @@ const disabledOpacity = (viewMemo: string, direction: string) => {
 interface SelectButton {
   direction: string;
   viewMemo: string;
-  viewDispatch: Dispatch<string>;
+  viewDispatch: Dispatch<{ type: string }>;
 }
 
 interface disabled {
   previous: boolean;
   next: boolean;
+  [key: string]: boolean;
 }
 
 const SelectButton = ({ direction, viewMemo, viewDispatch }: SelectButton) => {
@@ -52,7 +53,9 @@ const SelectButton = ({ direction, viewMemo, viewDispatch }: SelectButton) => {
     }
   }, [viewMemo]);
 
-  const handleClick = (e) => {
+  const handleClick = (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
     const type = e.currentTarget.value;
     viewDispatch({ type });
   };

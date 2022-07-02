@@ -4,7 +4,7 @@ import ViewSelect from "./ViewSelect";
 
 interface Header {
   viewMemo: string;
-  viewDispatch: Dispatch<string>;
+  viewDispatch: Dispatch<{ type: string }>;
 }
 
 const Header = ({ viewMemo, viewDispatch }: Header) => {

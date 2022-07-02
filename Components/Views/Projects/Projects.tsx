@@ -1,32 +1,34 @@
 import { commonStyle } from "Components/Views/commonStyle";
-import { forwardRef, ForwardRefRenderFunction } from "react";
+import { ForwardedRef, forwardRef, ForwardRefRenderFunction, Ref } from "react";
 import styled, { css } from "styled-components";
 
 interface Projects {
   viewMemo: string;
-  ref: ForwardRefRenderFunction<HTMLInputElement, {}>;
+  ref: Ref<HTMLElement>;
 }
 
-const Projects = forwardRef(({ viewMemo }: Projects, projectsRef) => {
-  return (
-    <Section ref={projectsRef} viewMemo={viewMemo}>
-      <h2>Prosjekter</h2>
+const Projects = forwardRef(
+  ({ viewMemo }: Projects, projectsRef: ForwardedRef<HTMLElement>) => {
+    return (
+      <Section ref={projectsRef} viewMemo={viewMemo}>
+        <h2>Prosjekter</h2>
 
-      <div>
-        <hr />
-      </div>
+        <div>
+          <hr />
+        </div>
 
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore optio
-        soluta aliquam labore! Quia ipsam, ipsa excepturi libero, soluta
-        molestias cum accusantium consequatur, aliquam amet iste praesentium
-        possimus ab natus facilis tenetur consectetur! Natus illo hic incidunt
-        magnam eligendi possimus dolor quae, ducimus omnis reprehenderit at
-        aliquid exercitationem quam veritatis!
-      </p>
-    </Section>
-  );
-});
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore
+          optio soluta aliquam labore! Quia ipsam, ipsa excepturi libero, soluta
+          molestias cum accusantium consequatur, aliquam amet iste praesentium
+          possimus ab natus facilis tenetur consectetur! Natus illo hic incidunt
+          magnam eligendi possimus dolor quae, ducimus omnis reprehenderit at
+          aliquid exercitationem quam veritatis!
+        </p>
+      </Section>
+    );
+  }
+);
 
 const titleColor1 = css`
   ${({ theme }) => theme.colors.titleColor1}

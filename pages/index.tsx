@@ -7,24 +7,32 @@ import {
   useReducer,
   useRef,
   useState,
+  Reducer,
+  Dispatch,
 } from "react";
 
 import Header from "Components/Header";
 import Views from "Components/Views";
 
-import viewReducer from "./helpers/viewReducer";
+import viewReducer, { ViewAction } from "./helpers/viewReducer";
 
 const App: NextPage = () => {
-  const skillsRef = useRef<HTMLInputElement>(null);
-  const introRef = useRef<HTMLInputElement>(null);
-  const projectsRef = useRef<HTMLInputElement>(null);
+  const skillsRef = useRef<HTMLElement>(null);
+  const introRef = useRef<HTMLElement>(null);
+  const projectsRef = useRef<HTMLElement>(null);
   const refs = {
     skillsRef,
     introRef,
     projectsRef,
   };
 
-  const [view, viewDispatch] = useReducer<string>(viewReducer, "intro");
+  const [view, viewDispatch]: [string, Dispatch<{ type: string }>] = useReducer<
+    Reducer<string, ViewAction>
+  >(
+    // @ts-ignore
+    viewReducer,
+    "intro"
+  );
   const [simpleView, setSimpleView] = useState("intro");
   const viewMemo = useMemo(() => {
     return simpleView;
@@ -33,7 +41,7 @@ const App: NextPage = () => {
   useEffect(() => {
     // Focus view when clicked in header
 
-    const resolve = (type: string, ref: RefObject<HTMLInputElement>) => {
+    const resolve = (type: string, ref: RefObject<HTMLElement>) => {
       viewDispatch({ type });
       ref.current?.scrollIntoView({
         behavior: "smooth",

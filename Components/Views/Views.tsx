@@ -5,12 +5,12 @@ import { Dispatch, RefObject, SetStateAction, useEffect } from "react";
 
 interface Views {
   refs: {
-    skillsRef: RefObject<HTMLInputElement>;
-    introRef: RefObject<HTMLInputElement>;
-    projectsRef: RefObject<HTMLInputElement>;
+    skillsRef: RefObject<HTMLElement>;
+    introRef: RefObject<HTMLElement>;
+    projectsRef: RefObject<HTMLElement>;
   };
   viewMemo: string;
-  viewDispatch: Dispatch<string>;
+  viewDispatch: Dispatch<{ type: string }>;
   setSimpleView: Dispatch<SetStateAction<string>>;
 }
 
@@ -20,9 +20,14 @@ const Views = ({ refs, viewMemo, viewDispatch, setSimpleView }: Views) => {
     const skills = refs.skillsRef.current;
     const projects = refs.projectsRef.current;
 
-    const introWithinBounds = intro?.getBoundingClientRect().top < 70;
-    const skillsWithinBounds = skills?.getBoundingClientRect().top < 123.5;
-    const projectsWithinBounds = projects?.getBoundingClientRect().top < 150;
+    const introWithinBounds =
+      (intro?.getBoundingClientRect().top as number) < 70;
+    const skillsWithinBounds =
+      (skills?.getBoundingClientRect().top as number) < 183.5;
+    const projectsWithinBounds =
+      (projects?.getBoundingClientRect().top as number) < 170;
+
+    console.log(skills?.getBoundingClientRect().height);
 
     if (introWithinBounds && !skillsWithinBounds && !projectsWithinBounds) {
       viewDispatch({ type: "resetIntro" });

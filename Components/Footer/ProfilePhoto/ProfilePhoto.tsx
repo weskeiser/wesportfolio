@@ -5,6 +5,7 @@ const ProfilePhoto = () => {
   return (
     <ImageWrapper>
       <Image src="/images/profilephoto.png" layout="fill" sizes="50vw" />
+      {/* <img src="/images/profilephoto.png" alt="" /> */}
     </ImageWrapper>
   );
 };
@@ -15,9 +16,13 @@ const ImageWrapper = styled.div`
   position: relative;
   margin-left: auto;
 
+  /* img { */
+  /* object-fit: contain;
+    object-position: left; */
+  /* } */
+
   img {
-    object-fit: contain;
-    object-position: left;
+    height: 100%;
   }
 `;
 

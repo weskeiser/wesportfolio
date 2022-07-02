@@ -1,9 +1,19 @@
-interface action {
-  action: "previous" | "next" | undefined;
+import { Reducer } from "react";
+
+enum ActionMethod {
+  previous = "PREVIOUS",
+  next = "NEXT",
+  resetIntro = "RESETINTRO",
+  resetSkills = "RESETSKILLS",
+  resetProjects = "RESETPROJECTS",
+}
+
+export interface ViewAction extends Reducer<{ type: string }, ActionMethod> {
+  action: ActionMethod;
   type: string;
 }
 
-const viewReducer = (view: string, action: action): string | undefined => {
+const viewReducer = (view: string, action: ViewAction): string | undefined => {
   if (action.type === "previous") {
     switch (view) {
       case "intro":

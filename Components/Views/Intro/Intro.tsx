@@ -1,33 +1,34 @@
 import { commonStyle } from "Components/Views/commonStyle";
-import { hrtime } from "process";
-import { forwardRef, ForwardRefRenderFunction } from "react";
+import { ForwardedRef, forwardRef, Ref, RefObject } from "react";
 import styled, { css } from "styled-components";
 
 interface Intro {
   viewMemo: string;
-  ref: ForwardRefRenderFunction<HTMLInputElement, {}>;
+  ref: Ref<HTMLElement>;
 }
 
-const Intro = forwardRef(({ viewMemo }: Intro, introRef) => {
-  return (
-    <Section ref={introRef} viewMemo={viewMemo}>
-      <h2>Introduksjon</h2>
+const Intro = forwardRef(
+  ({ viewMemo }: Intro, introRef: ForwardedRef<HTMLElement> | null) => {
+    return (
+      <Section ref={introRef} viewMemo={viewMemo}>
+        <h2>Introduksjon</h2>
 
-      <div>
-        <hr />
-      </div>
+        <div>
+          <hr />
+        </div>
 
-      <p>Selvlært frontend-utvikler som holder til i Oslo.</p>
-      <p>
-        Brenner for å skape gode brukeropplevelser ved bygging av intuitive
-        design med brukeren i fokus.
-      </p>
-      <p>Høyt dedikert, selvdreven og lærevillig.</p>
+        <p>Selvlært frontend-utvikler med tilholdssted Oslo.</p>
+        <p>
+          Brenner for å skape gode brukeropplevelser ved å bygge intuitive
+          design med brukeren i fokus.
+        </p>
+        <p>Høyt dedikert, selvdreven og lærevillig.</p>
 
-      <p>Åpen for in-house eller konsulentarbeid, både fysisk og remote.</p>
-    </Section>
-  );
-});
+        <p>Åpen for in-house eller konsulentarbeid, både fysisk og remote.</p>
+      </Section>
+    );
+  }
+);
 
 const titleColor1 = css`
   ${({ theme }) => theme.colors.titleColor1}

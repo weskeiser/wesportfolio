@@ -21,9 +21,7 @@ html {
 body {
   // REMOVE AFTER DEV
   touch-action: none;
-  background-color: ${({ theme }) => theme.colors.page}
 }
-
 
 main {
   /* margin-bottom: 12em; */

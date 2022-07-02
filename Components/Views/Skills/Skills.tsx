@@ -1,14 +1,14 @@
 import { commonStyle } from "Components/Views/commonStyle";
-import { ForwardedRef, forwardRef, ForwardRefRenderFunction } from "react";
+import { ForwardedRef, forwardRef, Ref } from "react";
 import styled, { css } from "styled-components";
 
 interface Skills {
   viewMemo: string;
-  ref: ForwardRefRenderFunction<HTMLInputElement, {}>;
+  ref: Ref<HTMLElement>;
 }
 
 const Skills = forwardRef(
-  ({ viewMemo }: Skills, skillsRef: ForwardedRef<HTMLDivElement>) => {
+  ({ viewMemo }: Skills, skillsRef: ForwardedRef<HTMLElement>) => {
     return (
       <Wrapper ref={skillsRef} viewMemo={viewMemo}>
         <h2>Ferdigheter</h2>
@@ -39,7 +39,7 @@ const titleColor1 = css`
   ${({ theme }) => theme.colors.titleColor1}
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   ${commonStyle}
 
   h2 {
