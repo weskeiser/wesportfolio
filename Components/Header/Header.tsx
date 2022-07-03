@@ -1,4 +1,4 @@
-import { Dispatch, RefObject } from "react";
+import { Dispatch } from "react";
 import styled from "styled-components";
 import ViewSelect from "./ViewSelect";
 
@@ -28,6 +28,8 @@ const Wrapper = styled.header`
     margin: auto 0;
     margin-left: 0.4em;
     color: ${({ theme }) => theme.colors.footerBackground};
+    letter-spacing: -0.06em;
+    word-spacing: -0.06em;
     color: #60693a;
     font-size: 1.5em;
     font-family: Mukta-SemiBold;

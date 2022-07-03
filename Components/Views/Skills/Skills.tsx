@@ -45,6 +45,7 @@ const Wrapper = styled.section`
   h2 {
     color: ${(props: Skills) =>
       props.viewMemo === "skills" ? titleColor1 : "#c9bf94"};
+    font-family: Mukta-SemiBold;
   }
 
   div {
@@ -53,8 +54,10 @@ const Wrapper = styled.section`
     width: 10em;
 
     hr {
-      color: ${({ viewMemo }) =>
-        viewMemo === "skills" ? titleColor1 : "transparent"};
+      color: transparent;
+      border-bottom: 2px solid
+        ${({ viewMemo }) =>
+          viewMemo === "skills" ? titleColor1 : "transparent"};
     }
   }
 

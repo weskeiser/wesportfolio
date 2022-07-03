@@ -16,7 +16,7 @@ const Footer = () => {
 };
 
 const Wrapper = styled.footer`
-  position: sticky;
+  position: fixed;
   width: 100%;
   bottom: 0;
 

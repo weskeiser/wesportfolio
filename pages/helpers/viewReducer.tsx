@@ -1,15 +1,5 @@
-import { Reducer } from "react";
-
-enum ActionMethod {
-  previous = "PREVIOUS",
-  next = "NEXT",
-  resetIntro = "RESETINTRO",
-  resetSkills = "RESETSKILLS",
-  resetProjects = "RESETPROJECTS",
-}
-
-export interface ViewAction extends Reducer<{ type: string }, ActionMethod> {
-  action: ActionMethod;
+export interface ViewAction {
+  action: string;
   type: string;
 }
 

@@ -27,14 +27,14 @@ interface SelectButton {
   viewDispatch: Dispatch<{ type: string }>;
 }
 
-interface disabled {
+interface Disabled {
   previous: boolean;
   next: boolean;
   [key: string]: boolean;
 }
 
 const SelectButton = ({ direction, viewMemo, viewDispatch }: SelectButton) => {
-  const [disabled, setDisabled] = useState<disabled>({
+  const [disabled, setDisabled] = useState<Disabled>({
     previous: true,
     next: false,
   });

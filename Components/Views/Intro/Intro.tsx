@@ -40,6 +40,7 @@ const Section = styled.section`
   h2 {
     color: ${(props: Intro) =>
       props.viewMemo === "intro" ? titleColor1 : "#c9bf94"};
+    font-family: Mukta-SemiBold;
   }
 
   div {
@@ -48,8 +49,10 @@ const Section = styled.section`
     width: 11em;
 
     hr {
-      color: ${({ viewMemo }) =>
-        viewMemo === "intro" ? titleColor1 : "transparent"};
+      color: transparent;
+      border-bottom: 2px solid
+        ${({ viewMemo }) =>
+          viewMemo === "intro" ? titleColor1 : "transparent"};
     }
   }
 `;

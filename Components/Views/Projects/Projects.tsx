@@ -17,14 +17,18 @@ const Projects = forwardRef(
           <hr />
         </div>
 
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore
-          optio soluta aliquam labore! Quia ipsam, ipsa excepturi libero, soluta
-          molestias cum accusantium consequatur, aliquam amet iste praesentium
-          possimus ab natus facilis tenetur consectetur! Natus illo hic incidunt
-          magnam eligendi possimus dolor quae, ducimus omnis reprehenderit at
-          aliquid exercitationem quam veritatis!
-        </p>
+        <h3>
+          Måltidsplanlegger -{" "}
+          <a href="https://github.com/weskeiser/mealplanner">
+            https://github.com/weskeiser/mealplanner
+          </a>
+        </h3>
+        <p>Blabla</p>
+
+        <h3>
+          Porteføljeside - <a href="">githublink</a>{" "}
+        </h3>
+        <p>blabla</p>
       </Section>
     );
   }
@@ -40,6 +44,7 @@ const Section = styled.section`
   h2 {
     color: ${(props: Projects) =>
       props.viewMemo === "projects" ? titleColor1 : "#c9bf94"};
+    font-family: Mukta-SemiBold;
   }
 
   div {
@@ -48,8 +53,10 @@ const Section = styled.section`
     width: 9em;
 
     hr {
-      color: ${({ viewMemo }) =>
-        viewMemo === "projects" ? titleColor1 : "transparent"};
+      color: transparent;
+      border-bottom: 2px solid
+        ${({ viewMemo }) =>
+          viewMemo === "projects" ? titleColor1 : "transparent"};
     }
   }
 `;
