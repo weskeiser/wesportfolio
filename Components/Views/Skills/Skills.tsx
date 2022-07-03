@@ -1,4 +1,4 @@
-import { commonStyle } from "Components/Views/commonStyle";
+import { commonStyle, dynamicDivider } from "Components/Views/commonStyle";
 import { ForwardedRef, forwardRef, Ref } from "react";
 import styled, { css } from "styled-components";
 
@@ -10,7 +10,7 @@ interface Skills {
 const Skills = forwardRef(
   ({ viewMemo }: Skills, skillsRef: ForwardedRef<HTMLElement>) => {
     return (
-      <Wrapper ref={skillsRef} viewMemo={viewMemo}>
+      <Section ref={skillsRef} viewMemo={viewMemo}>
         <h2>Ferdigheter</h2>
 
         <div>
@@ -18,21 +18,34 @@ const Skills = forwardRef(
         </div>
 
         <ul>
-          <li>JavaScript/TypeScript</li>
-          <li>React.js/Next.js</li>
+          <li>
+            <p>JavaScript/TypeScript</p>
+          </li>
 
-          <br />
-          <li>HTML</li>
-          <li>CSS/SCSS</li>
-          <li>Styled Components</li>
+          <li>
+            <p>React.js</p>
+          </li>
 
-          <br />
-          <li>Git</li>
-          <li>VIM</li>
+          <li>
+            <p>HTML</p>
+          </li>
+          <li>
+            <p>CSS/SCSS</p>
+          </li>
+          <li>
+            <p>Styled Components</p>
+          </li>
+
+          <li>
+            <p>Git</p>
+          </li>
+          <li>
+            <p>VIM</p>
+          </li>
         </ul>
 
         <hr />
-      </Wrapper>
+      </Section>
     );
   }
 );
@@ -41,36 +54,32 @@ const titleColor1 = css`
   ${({ theme }) => theme.colors.titleColor1}
 `;
 
-const Wrapper = styled.section`
+const Section = styled.section`
+  --dynamicDividerWidth: 9.4em;
+
   ${commonStyle}
 
   h2 {
-    color: ${(props: Skills) =>
-      props.viewMemo === "skills" ? titleColor1 : "#c9bf94"};
+    color: ${({ viewMemo }: { viewMemo: string }) =>
+      viewMemo === "skills" ? titleColor1 : "#c9bf94"};
     font-family: Mukta-SemiBold;
   }
 
   & > div {
-    margin: 0;
-    margin-bottom: 1em;
-    width: 10em;
+    ${dynamicDivider}
+    width: var(--dynamicDividerWidth);
 
     hr {
-      color: transparent;
-      border-bottom: 2px solid
+      border-bottom: 3px solid
         ${({ viewMemo }) =>
           viewMemo === "skills" ? titleColor1 : "transparent"};
     }
   }
 
-  & > ul {
-    list-style: none;
-  }
-
-  & > hr {
-    color: transparent;
-    border-bottom: 2px solid ${({ theme }) => theme.colors.titleColor1};
-    margin: 2em 0;
+  @media only screen and (min-width: 748px) {
+    & > div {
+      width: calc(var(--dynamicDividerWidth) * 1.65);
+    }
   }
 `;
 

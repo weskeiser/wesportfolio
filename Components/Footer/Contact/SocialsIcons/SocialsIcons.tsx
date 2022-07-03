@@ -18,8 +18,14 @@ const Wrapper = styled.div`
   display: flex;
   gap: 0.5em;
   margin-top: 0.8em;
-  /* left: 50%; */
-  /* transform: translateX(40%); */
+
+  @media only screen {
+    @media (min-width: 1025px) {
+      left: 50%;
+      transform: translateX(39%);
+      margin-top: 1.2em;
+    }
+  }
 `;
 
 const ImageWrapper = styled.div`

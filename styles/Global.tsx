@@ -17,14 +17,4 @@ html {
     src: url('/fonts/mukta/Mukta-Light.ttf');
   }
 }
-
-body {
-  // REMOVE AFTER DEV
-  touch-action: none;
-}
-
-main {
-  /* margin-bottom: 12em; */
-  height: 100vh;
-}
 `;

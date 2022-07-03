@@ -7,8 +7,6 @@ const Contact = () => {
       <h2>Wes Keiser</h2>
       <h3>front-end utvikler</h3>
 
-      {/* <hr /> */}
-
       <a href="mailto:wes@weskeiser.no/">wes@weskeiser.no</a>
       <br />
       <a href="+4746121065">+47 461 21 065</a>
@@ -22,7 +20,7 @@ const Wrapper = styled.address`
   width: 100%;
   color: ${({ theme }) => theme.colors.footerText};
   margin: 1em 0;
-  /* text-align: center; */
+  margin-left: 1em;
 
   h2 {
     font-size: 1.2em;
@@ -32,17 +30,26 @@ const Wrapper = styled.address`
     font-size: 1em;
     font-weight: 300;
     margin-bottom: 0.8em;
-    /* line-height: 1em; */
   }
-
-  /* hr {
-    border: 1px solid #9e9573;
-    margin: 1em 0;
-  } */
 
   a,
   a:visited {
     color: inherit;
+  }
+
+  @media only screen {
+    @media (min-width: 1025px) {
+      margin: auto 0;
+      text-align: center;
+
+      h3 {
+        margin-bottom: 1.2em;
+      }
+
+      @media (max-height: 685px) {
+        margin: 1em 0;
+      }
+    }
   }
 `;
 

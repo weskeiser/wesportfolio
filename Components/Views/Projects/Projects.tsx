@@ -1,4 +1,4 @@
-import { commonStyle } from "Components/Views/commonStyle";
+import { commonStyle, dynamicDivider } from "Components/Views/commonStyle";
 import { ForwardedRef, forwardRef, ForwardRefRenderFunction, Ref } from "react";
 import styled, { css } from "styled-components";
 
@@ -17,18 +17,23 @@ const Projects = forwardRef(
           <hr />
         </div>
 
-        <h3>
-          Måltidsplanlegger -{" "}
+        <article>
+          <h3>Måltidsplanlegger </h3>
           <a href="https://github.com/weskeiser/mealplanner">
             https://github.com/weskeiser/mealplanner
           </a>
-        </h3>
-        <p>Blabla</p>
+          <p>
+            En måltidsplanlegger med næringsinnholdkalkulator. Under utvikling.
+          </p>
+        </article>
 
-        <h3>
-          Porteføljeside - <a href="">githublink</a>{" "}
-        </h3>
-        <p>blabla</p>
+        <article>
+          <h3>Porteføljeside</h3>
+          <a href="">githublink</a>
+          <p>Kildekoden til dette porteføljenettstedet.</p>
+        </article>
+
+        <hr />
       </Section>
     );
   }
@@ -39,24 +44,60 @@ const titleColor1 = css`
 `;
 
 const Section = styled.section`
+  --dynamicDividerWidth: 8.45em;
   ${commonStyle};
 
   h2 {
-    color: ${(props: Projects) =>
-      props.viewMemo === "projects" ? titleColor1 : "#c9bf94"};
+    color: ${({ viewMemo }: { viewMemo: string }) =>
+      viewMemo === "projects" ? titleColor1 : "#c9bf94"};
     font-family: Mukta-SemiBold;
   }
 
   & > div {
-    margin: 0;
-    margin-bottom: 1em;
-    width: 9em;
+    ${dynamicDivider}
+    width: var(--dynamicDividerWidth);
 
     hr {
-      color: transparent;
-      border-bottom: 2px solid
+      border-bottom: 3px solid
         ${({ viewMemo }) =>
           viewMemo === "projects" ? titleColor1 : "transparent"};
+    }
+  }
+
+  & > article {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border: 1px solid ${titleColor1};
+    padding: 0.6em 1em;
+
+    & > h3 {
+      color: ${titleColor1};
+      font-weight: 300;
+      text-align: center;
+    }
+
+    a,
+    a:visited {
+      color: #c9bf94;
+      display: block;
+      margin-bottom: 1em;
+      text-align: center;
+      text-decoration: underline;
+    }
+
+    p {
+      color: black;
+    }
+  }
+
+  @media only screen {
+    @media (min-width: 748px) {
+      & > div {
+        width: calc(var(--dynamicDividerWidth) * 1.7);
+      }
+    }
+
+    @media (min-width: 1025px) {
     }
   }
 `;

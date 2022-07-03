@@ -1,6 +1,6 @@
-import { commonStyle } from "Components/Views/commonStyle";
-import { ForwardedRef, forwardRef, Ref, RefObject } from "react";
+import { ForwardedRef, forwardRef, Ref } from "react";
 import styled, { css } from "styled-components";
+import { commonStyle, dynamicDivider } from "../commonStyle";
 
 interface Intro {
   viewMemo: string;
@@ -19,12 +19,12 @@ const Intro = forwardRef(
 
         <ul>
           <li>
-            <p>Selvlært frontend-utvikler med tilholdssted Oslo.</p>
+            <p>Selvlært frontend-utvikler med base i Oslo.</p>
           </li>
           <li>
             <p>
-              Brenner for å skape gode brukeropplevelser ved å bygge intuitive
-              design med brukerne i fokus.
+              Brenner for å skape gode brukeropplevelser ved å utvikle
+              applikasjoner med intuitive design og brukerne i fokus.
             </p>
           </li>
           <li>
@@ -48,47 +48,31 @@ const titleColor1 = css`
 `;
 
 const Section = styled.section`
+  --dynamicDividerWidth: 10em;
+
   ${commonStyle};
 
   h2 {
-    color: ${(props: Intro) =>
-      props.viewMemo === "intro" ? titleColor1 : "#c9bf94"};
+    color: ${({ viewMemo }: { viewMemo: string }) =>
+      viewMemo === "intro" ? titleColor1 : "#c9bf94"};
     font-family: Mukta-SemiBold;
   }
 
-  & > ul {
-    list-style: none;
-
-    li {
-      display: inline-flex;
-      line-height: 1.5em;
-      margin-bottom: 0.5em;
-
-      ::before {
-        content: "‒";
-        margin-right: 0.5em;
-        color: ${({ theme }) => theme.colors.titleColor1};
-      }
-    }
-  }
-
   & > div {
-    margin: 0;
-    margin-bottom: 1em;
-    width: 11em;
+    ${dynamicDivider}
+    width: var(--dynamicDividerWidth);
 
     hr {
-      color: transparent;
-      border-bottom: 2px solid
+      border-bottom: 3px solid
         ${({ viewMemo }) =>
           viewMemo === "intro" ? titleColor1 : "transparent"};
     }
   }
 
-  & > hr {
-    color: transparent;
-    border-bottom: 2px solid ${({ theme }) => theme.colors.titleColor1};
-    margin: 2em 0;
+  @media only screen and (min-width: 748px) {
+    & > div {
+      width: calc(var(--dynamicDividerWidth) * 1.6);
+    }
   }
 `;
 

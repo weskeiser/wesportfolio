@@ -35,6 +35,12 @@ const Wrapper = styled.header`
     font-family: Mukta-SemiBold;
     font-weight: 600;
   }
+
+  @media only screen {
+    @media (min-width: 1025px) {
+      margin-right: ${({ theme }) => theme.widths.footer1025};
+    }
+  }
 `;
 
 export default Header;

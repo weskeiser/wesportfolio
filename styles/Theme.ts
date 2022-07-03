@@ -10,4 +10,8 @@ export const theme = {
     header: "3.5rem",
     footer: "12rem",
   },
+
+  widths: {
+    footer1025: "20em",
+  },
 };

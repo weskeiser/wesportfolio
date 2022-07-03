@@ -23,11 +23,13 @@ const Views = ({ refs, viewDispatch, viewMemo, setSimpleView }: Views) => {
     const introWithinBounds =
       (intro?.getBoundingClientRect().top as number) < 70;
     const skillsWithinBounds =
-      (skills?.getBoundingClientRect().top as number) < 183.5;
+      (skills?.getBoundingClientRect().top as number) < 220;
     const projectsWithinBounds =
-      (projects?.getBoundingClientRect().top as number) < 170;
-
-    console.log(skills?.getBoundingClientRect().height);
+      // (projects?.getBoundingClientRect().top as number) < 320;
+      (projects?.getBoundingClientRect().top as number) +
+        (intro?.getBoundingClientRect().height as number) +
+        (skills?.getBoundingClientRect().height as number) <=
+      846;
 
     if (introWithinBounds && !skillsWithinBounds && !projectsWithinBounds) {
       viewDispatch({ type: "resetIntro" });

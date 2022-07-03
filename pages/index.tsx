@@ -84,5 +84,14 @@ export default App;
 
 const Main = styled.main`
   padding-top: 2em;
-  margin-bottom: calc(${({ theme }) => theme.heights.footer} * 2);
+  margin-bottom: ${({ theme }) => theme.heights.footer};
+  @media only screen {
+    @media (min-width: 1025px) {
+      margin-bottom: 0;
+      margin-right: ${({ theme }) => theme.widths.footer1025};
+    }
+  }
+
+  // REMOVE AFTER DEV
+  touch-action: none;
 `;

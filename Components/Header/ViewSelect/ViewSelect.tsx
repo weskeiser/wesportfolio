@@ -44,7 +44,7 @@ const Wrapper = styled.div`
     cursor: pointer;
     background-color: ${({ theme }) => theme.colors.page};
     border: none;
-    /* border: 1px solid black; */
+    margin-bottom: 1px;
 
     :disabled {
       cursor: initial;
@@ -76,6 +76,12 @@ const Wrapper = styled.div`
     margin: auto 0;
     width: 5.5em;
     color: ${({ theme }) => theme.colors.titleColor1};
+  }
+
+  @media only screen {
+    @media (min-width: 1025px) {
+      margin: 0 auto;
+    }
   }
 `;
 
