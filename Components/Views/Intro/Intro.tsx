@@ -17,14 +17,27 @@ const Intro = forwardRef(
           <hr />
         </div>
 
-        <p>Selvlært frontend-utvikler med tilholdssted Oslo.</p>
-        <p>
-          Brenner for å skape gode brukeropplevelser ved å bygge intuitive
-          design med brukeren i fokus.
-        </p>
-        <p>Høyt dedikert, selvdreven og lærevillig.</p>
+        <ul>
+          <li>
+            <p>Selvlært frontend-utvikler med tilholdssted Oslo.</p>
+          </li>
+          <li>
+            <p>
+              Brenner for å skape gode brukeropplevelser ved å bygge intuitive
+              design med brukerne i fokus.
+            </p>
+          </li>
+          <li>
+            <p>Høyt dedikert, selvdreven og lærevillig.</p>
+          </li>
+          <li>
+            <p>
+              Åpen for in-house eller konsulentarbeid, både fysisk og remote.
+            </p>
+          </li>
+        </ul>
 
-        <p>Åpen for in-house eller konsulentarbeid, både fysisk og remote.</p>
+        <hr />
       </Section>
     );
   }
@@ -43,7 +56,23 @@ const Section = styled.section`
     font-family: Mukta-SemiBold;
   }
 
-  div {
+  & > ul {
+    list-style: none;
+
+    li {
+      display: inline-flex;
+      line-height: 1.5em;
+      margin-bottom: 0.5em;
+
+      ::before {
+        content: "‒";
+        margin-right: 0.5em;
+        color: ${({ theme }) => theme.colors.titleColor1};
+      }
+    }
+  }
+
+  & > div {
     margin: 0;
     margin-bottom: 1em;
     width: 11em;
@@ -54,6 +83,12 @@ const Section = styled.section`
         ${({ viewMemo }) =>
           viewMemo === "intro" ? titleColor1 : "transparent"};
     }
+  }
+
+  & > hr {
+    color: transparent;
+    border-bottom: 2px solid ${({ theme }) => theme.colors.titleColor1};
+    margin: 2em 0;
   }
 `;
 

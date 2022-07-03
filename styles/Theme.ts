@@ -7,7 +7,7 @@ export const theme = {
   },
 
   heights: {
-    header: "3.5em",
-    footer: "12em",
+    header: "3.5rem",
+    footer: "12rem",
   },
 };

@@ -38,7 +38,6 @@ const App: NextPage = () => {
   );
 
   const [simpleView, setSimpleView] = useState("intro");
-
   const viewMemo = useMemo(() => {
     return simpleView;
   }, [view, simpleView]);
@@ -71,9 +70,9 @@ const App: NextPage = () => {
 
       <Main>
         <Views
-          viewMemo={viewMemo}
-          viewDispatch={viewDispatch}
           refs={refs}
+          viewDispatch={viewDispatch}
+          viewMemo={viewMemo}
           setSimpleView={setSimpleView}
         />
       </Main>
@@ -85,5 +84,5 @@ export default App;
 
 const Main = styled.main`
   padding-top: 2em;
-  margin-bottom: ${({ theme }) => theme.heights.footer};
+  margin-bottom: calc(${({ theme }) => theme.heights.footer} * 2);
 `;

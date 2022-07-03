@@ -9,12 +9,12 @@ interface Views {
     introRef: RefObject<HTMLElement>;
     projectsRef: RefObject<HTMLElement>;
   };
-  viewMemo: string;
   viewDispatch: Dispatch<{ type: string }>;
+  viewMemo: string;
   setSimpleView: Dispatch<SetStateAction<string>>;
 }
 
-const Views = ({ refs, viewMemo, viewDispatch, setSimpleView }: Views) => {
+const Views = ({ refs, viewDispatch, viewMemo, setSimpleView }: Views) => {
   const onScroll = () => {
     const intro = refs.introRef.current;
     const skills = refs.skillsRef.current;

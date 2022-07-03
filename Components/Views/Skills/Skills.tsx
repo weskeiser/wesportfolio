@@ -30,6 +30,8 @@ const Skills = forwardRef(
           <li>Git</li>
           <li>VIM</li>
         </ul>
+
+        <hr />
       </Wrapper>
     );
   }
@@ -48,7 +50,7 @@ const Wrapper = styled.section`
     font-family: Mukta-SemiBold;
   }
 
-  div {
+  & > div {
     margin: 0;
     margin-bottom: 1em;
     width: 10em;
@@ -61,8 +63,14 @@ const Wrapper = styled.section`
     }
   }
 
-  ul {
+  & > ul {
     list-style: none;
+  }
+
+  & > hr {
+    color: transparent;
+    border-bottom: 2px solid ${({ theme }) => theme.colors.titleColor1};
+    margin: 2em 0;
   }
 `;
 

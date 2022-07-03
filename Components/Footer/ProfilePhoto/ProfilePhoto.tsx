@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 const ProfilePhoto = () => {
   return (
-    <ImageWrapper>
-      <img src="/images/profilephoto.png" alt="" />
-    </ImageWrapper>
+    // <ImageWrapper>
+    <img src="/images/profilephoto.png" alt="" />
+    // </ImageWrapper>
   );
 };
 
 const ImageWrapper = styled.div`
-  height: 100%;
-  position: fixed;
+  /* height: 100%;
+  position: fixed; */
 
   img {
     height: ${({ theme }) => theme.heights.footer};

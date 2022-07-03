@@ -47,7 +47,7 @@ const Section = styled.section`
     font-family: Mukta-SemiBold;
   }
 
-  div {
+  & > div {
     margin: 0;
     margin-bottom: 1em;
     width: 9em;

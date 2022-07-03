@@ -71,7 +71,6 @@ const Wrapper = styled.div`
 
   & > p {
     font-family: Mukta-SemiBold;
-    font-weight: 600;
     text-align: center;
     font-size: 1.2em;
     margin: auto 0;
